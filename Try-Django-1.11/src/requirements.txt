@@ -6,3 +6,6 @@ olefile==0.44
 Pillow==4.1.1
 psycopg2==2.7.1
 pytz==2017.2
+
+pytest==4.6.11
+pytest-django==3.9.0

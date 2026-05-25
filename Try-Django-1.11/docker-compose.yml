@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    # Ejecutamos el servidor apuntando dentro de la carpeta src/
+    command: python src/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app  # El "espejo" entre tu Ubuntu y el contenedor
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    # Usamos Postgres 10, una versión acorde a la época de Django 1.11
+    image: postgres:10
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+volumes:
+  postgres_data:
