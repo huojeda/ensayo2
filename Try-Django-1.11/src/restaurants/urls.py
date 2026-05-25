@@ -8,6 +8,9 @@ from .views import (
     RestaurantUpdateView
 
 )
+
+app_name = 'restaurants'
+
 urlpatterns = [
     url(r'^create/$',  RestaurantCreateView.as_view(), name='create'),
     #url(r'^(?P<slug>[\w-]+)/edit/$', RestaurantUpdateView.as_view(), name='edit'),

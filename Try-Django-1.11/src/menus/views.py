@@ -7,7 +7,7 @@ from .models import Item
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             object_list = Item.objects.filter(public=True).order_by('-timestamp')
             return render(request, "home.html", {"object_list": object_list})
 

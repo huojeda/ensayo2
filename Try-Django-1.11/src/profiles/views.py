@@ -38,7 +38,7 @@ class RegisterView(SuccessMessageMixin, CreateView):
     success_message = "Your account was created successfully. Please check your email."
 
     def dispatch(self, *args, **kwargs):
-        # if self.request.user.is_authenticated():
+        # if self.request.user.is_authenticated:
         #     return redirect("/logout")
         return super(RegisterView, self).dispatch(*args, **kwargs)
 
@@ -62,7 +62,7 @@ class RandomProfileDetailView(DetailView):
         context = super(RandomProfileDetailView, self).get_context_data(*args, **kwargs)
         user = context['user']
         is_following = False
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             if user.profile in self.request.user.is_following.all():
                 is_following = True
         context['is_following'] = is_following
@@ -87,7 +87,7 @@ class ProfileDetailView(DetailView):
         context = super(ProfileDetailView, self).get_context_data(*args, **kwargs)
         user = context['user']
         is_following = False
-        if self.request.user.is_authenticated():
+        if self.request.user.is_authenticated:
             if user.profile in self.request.user.is_following.all():
                 is_following = True
         context['is_following'] = is_following

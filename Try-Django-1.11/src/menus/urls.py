@@ -7,6 +7,9 @@ from .views import (
     ItemListView,
     ItemUpdateView,
 )
+
+app_name = 'menus'
+
 urlpatterns = [
     url(r'^create/$',  ItemCreateView.as_view(), name='create'),
     #url(r'^(?P<pk>\d+)/edit/$', ItemUpdateView.as_view(), name='edit'),
